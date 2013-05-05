@@ -20,15 +20,15 @@ public class Flann_ItemDelTool extends Item {
 	
 	public Flann_ItemDelTool(int par1, String t, boolean delBed) {
 		super(par1);
-		setCreativeTab(CreativeTabs.tabMaterials);
+		setCreativeTab(CreativeTabs.tabTools);
 		tex = t;
 		this.remBed = delBed;
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT) //Makes sure that only the client side can call this method
-	public void updateIcons(IconRegister IR){
-		this.iconIndex = IR.registerIcon(InstantToolCore.modid + ":" + tex);
+	public void registerIcons(IconRegister IR){
+		this.itemIcon = IR.registerIcon(InstantToolCore.modid + ":" + tex);
 	}
 	
 	/**

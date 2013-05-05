@@ -17,7 +17,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
-@Mod(modid=InstantToolCore.modid,name="Instant Mining Mod",version="#1")
+@Mod(modid=InstantToolCore.modid,name="Instant Mining Mod",version="#2")
 public class InstantToolCore {
 	public static final String modid = "instant";
 	

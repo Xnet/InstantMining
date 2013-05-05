@@ -20,19 +20,19 @@ public class Flann_ItemCombTool extends ItemTool {
 	public String tex;
 	public boolean remBed;
 	/** an array of the blocks this spade is effective against */
-    public static final Block[] blocksEffectiveAgainst = new Block[] {Block.cobblestone, Block.stoneDoubleSlab, Block.stoneSingleSlab, Block.stone, Block.sandStone, Block.cobblestoneMossy, Block.oreIron, Block.blockSteel, Block.oreCoal, Block.blockGold, Block.oreGold, Block.oreDiamond, Block.blockDiamond, Block.ice, Block.netherrack, Block.oreLapis, Block.blockLapis, Block.oreRedstone, Block.oreRedstoneGlowing, Block.rail, Block.railDetector, Block.railPowered, Block.railActivator};
+    public static final Block[] blocksEffectiveAgainst = new Block[] {Block.cobblestone, Block.stoneDoubleSlab, Block.stoneSingleSlab, Block.stone, Block.sandStone, Block.cobblestoneMossy, Block.oreIron, Block.blockIron, Block.oreCoal, Block.blockGold, Block.oreGold, Block.oreDiamond, Block.blockDiamond, Block.ice, Block.netherrack, Block.oreLapis, Block.blockLapis, Block.oreRedstone, Block.oreRedstoneGlowing, Block.rail, Block.railDetector, Block.railPowered, Block.railActivator};
 	
 	public Flann_ItemCombTool(int par1, String t, boolean delBed) {
 		super(par1, 0, EnumHelper.addToolMaterial("INSTANT", 3, 0, 5000F, 1, 0), blocksEffectiveAgainst);
-		setCreativeTab(CreativeTabs.tabMaterials);
+		setCreativeTab(CreativeTabs.tabTools);
 		tex = t;
 		this.remBed = delBed;
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT) //Makes sure that only the client side can call this method
-	public void updateIcons(IconRegister IR){
-		this.iconIndex = IR.registerIcon(InstantToolCore.modid + ":" + tex);
+	public void registerIcons(IconRegister IR){
+		this.itemIcon = IR.registerIcon(InstantToolCore.modid + ":" + tex);
 	}
 	
 	/**
