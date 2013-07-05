@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -17,20 +18,27 @@ import net.minecraftforge.common.EnumHelper;
 
 public class Flann_ItemMineTool extends ItemTool {
 
-	public String tex;
+	public String t, name;
+	
 	/** an array of the blocks this spade is effective against */
     public static final Block[] blocksEffectiveAgainst = new Block[] {Block.cobblestone, Block.stoneDoubleSlab, Block.stoneSingleSlab, Block.stone, Block.sandStone, Block.cobblestoneMossy, Block.oreIron, Block.blockIron, Block.oreCoal, Block.blockGold, Block.oreGold, Block.oreDiamond, Block.blockDiamond, Block.ice, Block.netherrack, Block.oreLapis, Block.blockLapis, Block.oreRedstone, Block.oreRedstoneGlowing, Block.rail, Block.railDetector, Block.railPowered, Block.railActivator};
 	
-	public Flann_ItemMineTool(int par1, String t) {
-		super(par1, 0, EnumHelper.addToolMaterial("INSTANT", 3, 0, 5000F, 1, 0), blocksEffectiveAgainst);
+	public Flann_ItemMineTool(int par1, String displayName, String tex, EnumToolMaterial enumtoolmaterial) {
+		super(par1, 0, enumtoolmaterial, blocksEffectiveAgainst);
 		setCreativeTab(CreativeTabs.tabTools);
-		tex = t;
+		t = tex;
+		name = displayName;
+	}
+	
+	@Override
+	public String getItemDisplayName(ItemStack is){
+		return name;
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT) //Makes sure that only the client side can call this method
 	public void registerIcons(IconRegister IR){
-		this.itemIcon = IR.registerIcon(InstantToolCore.modid + ":" + tex);
+		this.itemIcon = IR.registerIcon(t);
 	}
 	
 	/**

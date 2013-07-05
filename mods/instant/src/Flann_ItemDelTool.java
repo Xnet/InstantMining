@@ -15,20 +15,26 @@ import net.minecraftforge.common.EnumHelper;
 
 public class Flann_ItemDelTool extends Item {
 
-	public String tex;
+	public String t, name;
 	public boolean remBed;
 	
-	public Flann_ItemDelTool(int par1, String t, boolean delBed) {
+	public Flann_ItemDelTool(int par1, String displayName, String tex, boolean delBed) {
 		super(par1);
 		setCreativeTab(CreativeTabs.tabTools);
-		tex = t;
+		t = tex;
 		this.remBed = delBed;
+		name = displayName;
+	}
+	
+	@Override
+	public String getItemDisplayName(ItemStack is){
+		return name;
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT) //Makes sure that only the client side can call this method
 	public void registerIcons(IconRegister IR){
-		this.itemIcon = IR.registerIcon(InstantToolCore.modid + ":" + tex);
+		this.itemIcon = IR.registerIcon(t);
 	}
 	
 	/**
