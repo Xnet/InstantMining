@@ -56,7 +56,7 @@ public class Flann_ItemCombTool extends ItemTool {
      * Returns the damage against a given entity.
      */
 	@Override
-    public int getDamageVsEntity(Entity par1Entity)
+	public float getDamageVsEntity(Entity par1Entity, ItemStack itemStack)
     {
         return 1;
     }

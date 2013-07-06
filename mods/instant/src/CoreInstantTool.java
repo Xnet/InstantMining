@@ -25,7 +25,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
-@Mod(modid="InstantMining",name="Instant Mining Mod",version="#3")
+@Mod(modid="InstantMining",name="Instant Mining Mod",version="#4")
 public class CoreInstantTool {
 	public static final String texLoc = "instant:";
 	
@@ -40,6 +40,8 @@ public class CoreInstantTool {
 	
 	public static EnumToolMaterial MINING = EnumHelper.addToolMaterial("MINING", 3, 0, 5000F, 1, 0);
 	public static EnumToolMaterial COMBI = EnumHelper.addToolMaterial("COMBI", 3, 0, 5000F, 1, 0);
+	
+	public static Item mineTool, deleteTool, combiTool;
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
@@ -62,32 +64,34 @@ public class CoreInstantTool {
 			if(enableCoreIngotRedstone)
 				set(coreConfig, "general", "enableIngotRedstone", true);
 		coreConfig.save();
+		
+		init_pre();
 	}
-	
-	public static Item mineTool, deleteTool, combiTool;
 	
 	@Init
 	public void load(FMLInitializationEvent event){
-		// Initialise
-		// setToolClass
-		// addName
-		// addRecipe
-		
+		init();
+	}
+	
+	public void init_pre(){
 		mineTool = new Flann_ItemMineTool(mineID, "Mining Tool", texLoc+"mineTool", MINING).setUnlocalizedName("mineTool");
-		MinecraftForge.setToolClass(mineTool, "pickaxe", 3);
 		//LanguageRegistry.addName(mineTool, "Mining Tool");
+		
+		deleteTool = new Flann_ItemDelTool(delID, "Delete Tool", texLoc+"delTool", delBedrock).setUnlocalizedName("delTool");
+		//LanguageRegistry.addName(deleteTool, "Delete Tool");
+		
+		combiTool = new Flann_ItemCombTool(combID, "Combi Tool", texLoc+"combTool", combBedrock, COMBI).setUnlocalizedName("combTool");
+		//LanguageRegistry.addName(combiTool, "Combi Tool");
+	}
+	public void init(){
+		MinecraftForge.setToolClass(mineTool, "pickaxe", 3);
 		OreDictionary.registerOre("instantMining", mineTool);
 		GameRegistry.addRecipe(new ItemStack(mineTool), "  d"," s ","s  ", Character.valueOf('d'), Item.diamond, Character.valueOf('s'), Item.stick);
 		
-		deleteTool = new Flann_ItemDelTool(delID, "Delete Tool", texLoc+"delTool", delBedrock).setUnlocalizedName("delTool");
-		// setToolClass do not have any function here since this doesn't work as a pickaxe/axe/shovel... 
-		//LanguageRegistry.addName(deleteTool, "Delete Tool");
 		OreDictionary.registerOre("instantDelete", deleteTool);
 		// No recipe since this is a admin tool, atleast for now
 		
-		combiTool = new Flann_ItemCombTool(combID, "Combi Tool", texLoc+"combTool", combBedrock, COMBI).setUnlocalizedName("combTool");
 		MinecraftForge.setToolClass(combiTool, "pickaxe", 3);
-		//LanguageRegistry.addName(combiTool, "Combi Tool");
 		OreDictionary.registerOre("instantCombi", combiTool);
 		// No recipe since this is a admin tool, atleast for now
 	}
