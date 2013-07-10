@@ -25,7 +25,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
-@Mod(modid="InstantMining",name="Instant Mining Mod",version="#4")
+@Mod(modid="InstantMining",name="Instant Mining Mod",version="#5")
 public class CoreInstantTool {
 	public static final String texLoc = "instant:";
 	
