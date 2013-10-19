@@ -25,6 +25,7 @@ public class Flann_ItemMineTool extends ItemTool {
 	
 	public Flann_ItemMineTool(int par1, String displayName, String tex, EnumToolMaterial enumtoolmaterial) {
 		super(par1, 0, enumtoolmaterial, blocksEffectiveAgainst);
+        this.maxStackSize = 1;
 		setCreativeTab(CreativeTabs.tabTools);
 		t = tex;
 		name = displayName;
@@ -58,5 +59,14 @@ public class Flann_ItemMineTool extends ItemTool {
 	public float getDamageVsEntity(Entity par1Entity, ItemStack itemStack)
     {
         return 1;
+    }
+	
+	/**
+     * Returns if the item (tool) can harvest results from the block type.
+     */
+	@Override
+    public boolean canHarvestBlock(Block par1Block)
+    {
+        return true;
     }
 }

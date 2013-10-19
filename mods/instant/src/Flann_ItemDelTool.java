@@ -20,6 +20,7 @@ public class Flann_ItemDelTool extends Item {
 	
 	public Flann_ItemDelTool(int par1, String displayName, String tex, boolean delBed) {
 		super(par1);
+        this.maxStackSize = 1;
 		setCreativeTab(CreativeTabs.tabTools);
 		t = tex;
 		this.remBed = delBed;

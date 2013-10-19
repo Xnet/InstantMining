@@ -25,6 +25,7 @@ public class Flann_ItemCombTool extends ItemTool {
 	
 	public Flann_ItemCombTool(int par1, String displayName, String tex, boolean delBed, EnumToolMaterial enumtoolmaterial) {
 		super(par1, 0, enumtoolmaterial, blocksEffectiveAgainst);
+        this.maxStackSize = 1;
 		setCreativeTab(CreativeTabs.tabTools);
 		t = tex;
 		this.remBed = delBed;
@@ -62,6 +63,15 @@ public class Flann_ItemCombTool extends ItemTool {
     }
 	
 	/**
+     * Returns if the item (tool) can harvest results from the block type.
+     */
+	@Override
+    public boolean canHarvestBlock(Block par1Block)
+    {
+        return true;
+    }
+	
+	/**
      * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
      * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
      */
@@ -85,5 +95,4 @@ public class Flann_ItemCombTool extends ItemTool {
 				return false;
 		}
     }
-	
 }
